@@ -22,22 +22,24 @@
                     <li class="nav-item">@Html.ActionLink("Bài viết", "Index", "BaiViet", null, new { @class = "nav-link" })</li>
                     <li class="nav-item">@Html.ActionLink("Giới thiệu", "About", "Home", null, new { @class = "nav-link" })</li>
                     <li class="nav-item">@Html.ActionLink("Liên hệ", "Index", "Contact", null, new { @class = "nav-link" })</li>
-                    @if (User.IsInRole("Admin")) { <li class="nav-item">@Html.ActionLink("Admin", "Index", "Dashboard", new { area = "Admin" }, new { @class = "nav-link" })</li> }
+                    @if (User.IsInRole("Admin")) {
+                    <li class="nav-item">@Html.ActionLink("Admin", "Index", "Dashboard", new { area = "Admin" }, new { @class = "nav-link" })</li>
+ }
                 </ul>
                 @using (Html.BeginForm("Index", "Search", FormMethod.Get, new { @class = "d-flex me-3", role = "search" }))
                 {
-                    <input class="form-control form-control-sm me-2" name="q" placeholder="Tìm kiếm" />
-                    <button class="btn btn-warning btn-sm" type="submit">Tìm</button>
+                <input class="form-control form-control-sm me-2" name="q" placeholder="Tìm kiếm" />
+                <button class="btn btn-warning btn-sm" type="submit">Tìm</button>
                 }
                 <div class="d-flex gap-2">
                     @if (User.Identity.IsAuthenticated)
                     {
-                        @Html.ActionLink("Hồ sơ", "Profile", "Account", null, new { @class = "btn btn-outline-light btn-sm" })
-                        @Html.ActionLink("Đăng xuất", "Logout", "Account", null, new { @class = "btn btn-light btn-sm" })
+                    @Html.ActionLink("Hồ sơ", "Profile", "Account", null, new { @class = "btn btn-outline-light btn-sm" })
+                    @Html.ActionLink("Đăng xuất", "Logout", "Account", null, new { @class = "btn btn-light btn-sm" })
                     }
                     else
                     {
-                        @Html.ActionLink("Đăng nhập", "Login", "Account", null, new { @class = "btn btn-light btn-sm" })
+                    @Html.ActionLink("Đăng nhập", "Login", "Account", null, new { @class = "btn btn-light btn-sm" })
                     }
                 </div>
             </div>
@@ -59,5 +61,15 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation-unobtrusive@4.0.0/dist/jquery.validate.unobtrusive.min.js"></script>
     @RenderSection("scripts", required: false)
+    <script>
+        setTimeout(function () {
+            var alerts = document.querySelectorAll('.alert');
+            alerts.forEach(function (alert) {
+                alert.style.transition = 'opacity 0.5s';
+                alert.style.opacity = '0';
+                setTimeout(function () { alert.remove(); }, 500);
+            });
+        }, 3000);
+    </script>
 </body>
 </html>
