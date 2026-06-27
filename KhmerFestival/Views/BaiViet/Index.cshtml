@@ -1,0 +1,14 @@
+﻿@model IEnumerable<KhmerFestival.Models.Entities.BaiViet>
+@{ ViewBag.Title = "Bài viết"; }
+<h1 class="h3 mb-3">Bài viết</h1>
+<div class="row g-3">
+@foreach (var item in Model)
+{
+    <div class="col-md-6 col-xl-4">
+        <article class="card h-100">
+            @if (!string.IsNullOrWhiteSpace(item.AnhDaiDien)) { <img src="@Url.Content(item.AnhDaiDien)" class="card-img-top" alt="@item.TieuDe" /> }
+            <div class="card-body"><h2 class="h5">@Html.ActionLink(item.TieuDe, "Details", new { id = item.Id })</h2><p>@System.Net.WebUtility.HtmlDecode(item.TomTat)</p></div>
+        </article>
+    </div>
+}
+</div>

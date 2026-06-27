@@ -1,0 +1,27 @@
+﻿@model IEnumerable<KhmerFestival.Models.Entities.NguoiDung>
+@{ ViewBag.Title = "Tài khoản"; }
+<h1 class="h3">Quản lý tài khoản</h1>
+@using (Html.BeginForm("Index", "TaiKhoan", FormMethod.Get, new { @class = "row g-2 mb-3" }))
+{
+    <div class="col-md-4"><input class="form-control" name="q" value="@ViewBag.Query" placeholder="Tìm email hoặc tên" /></div>
+    <div class="col-md-2"><button class="btn btn-outline-primary w-100">Tìm</button></div>
+}
+<table class="table table-striped table-sm align-middle">
+    <thead><tr><th>Email</th><th>Họ tên</th><th>Vai trò</th><th>Ngày đăng ký</th></tr></thead>
+    <tbody>
+    @if (!Model.Any())
+    {
+        <tr><td colspan="4" class="text-center text-muted py-3">Không có dữ liệu</td></tr>
+    }
+    else
+    {
+        foreach (var item in Model)
+        {
+            var vaiTro = item.VaiTro == "Admin" ? "Quản trị viên" : "Thành viên";
+            <tr>
+                <td>@item.Email</td><td>@item.HoTen</td><td>@vaiTro</td><td>@item.NgayTao.ToString("dd/MM/yyyy")</td>
+            </tr>
+        }
+    }
+    </tbody>
+</table>

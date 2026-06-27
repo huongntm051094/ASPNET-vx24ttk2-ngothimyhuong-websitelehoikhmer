@@ -1,0 +1,36 @@
+﻿@model KhmerFestival.Models.Entities.BaiViet
+@{ ViewBag.Title = Model.Id == 0 ? "Thêm bài viết" : "Sửa bài viết"; }
+@{
+    var lehHois = ViewBag.LehHois as IEnumerable<KhmerFestival.Models.Entities.LehHoi> ?? Enumerable.Empty<KhmerFestival.Models.Entities.LehHoi>();
+    var selected = new System.Collections.Generic.HashSet<int>(ViewBag.SelectedLehHoiIds as int[] ?? new int[0]);
+}
+<h1 class="h3">@ViewBag.Title</h1>
+@using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(x => x.Id)
+    @Html.HiddenFor(x => x.AnhDaiDien)
+    @Html.HiddenFor(x => x.IsDeleted)
+    @Html.HiddenFor(x => x.NgayTao)
+    @Html.HiddenFor(x => x.NguoiTaoId)
+    <div class="mb-3">@Html.LabelFor(x => x.TieuDe, new { @class = "form-label" })@Html.TextBoxFor(x => x.TieuDe, new { @class = "form-control" })</div>
+    <div class="mb-3">@Html.LabelFor(x => x.TomTat, new { @class = "form-label" })@Html.TextAreaFor(x => x.TomTat, new { @class = "form-control", rows = 2 })</div>
+    <div class="mb-3"><label class="form-label">Ảnh đầu bài</label><input class="form-control" type="file" name="anhDaiDien" accept=".jpg,.jpeg,.png" /></div>
+    <div class="mb-3">
+        <label class="form-label">Lễ hội liên quan</label>
+        <div class="row g-2">
+            @foreach (var item in lehHois)
+            {
+                <div class="col-md-4">
+                    <label class="form-check">
+                        <input class="form-check-input" type="checkbox" name="selectedLehHoiIds" value="@item.Id" @(selected.Contains(item.Id) ? "checked" : "") />
+                        <span class="form-check-label">@item.TenLehHoi</span>
+                    </label>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="mb-3">@Html.LabelFor(x => x.NoiDung, new { @class = "form-label" })@Html.TextAreaFor(x => x.NoiDung, new { @class = "form-control richtext" })</div>
+    <button class="btn btn-primary">Lưu</button>
+    @Html.ActionLink("Hủy", "Index", null, new { @class = "btn btn-link" })
+}

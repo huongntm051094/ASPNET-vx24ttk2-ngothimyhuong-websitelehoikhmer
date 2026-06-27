@@ -1,0 +1,21 @@
+﻿[
+  {"index":7,"text":"GIỚI THIỆU LỄ HỘI KHMER"},
+  {"index":17,"text":"Sau thời gian học tập và hoàn thành báo cáo môn Chuyên đề ASP.NET, tôi xin được bày tỏ lòng biết ơn chân thành đến thầy Đoàn Phước Miền đã tận tình giảng dạy và hướng dẫn tôi trong suốt quá trình học tập, nghiên cứu và xây dựng website giới thiệu lễ hội Khmer."},
+  {"index":18,"text":"Nhờ những kiến thức và kinh nghiệm thực tiễn mà thầy truyền đạt, tôi đã có cơ hội tiếp cận với ASP.NET MVC 5, Entity Framework 6, SQL Server, Razor View, Bootstrap 5 và quy trình xây dựng một ứng dụng web từ phân tích yêu cầu đến triển khai giao diện, xử lý nghiệp vụ và lưu trữ dữ liệu."},
+  {"index":19,"text":"Trong quá trình thực hiện báo cáo, tôi đã gặp nhiều khó khăn khi phân tích yêu cầu, thiết kế cơ sở dữ liệu, tổ chức khu vực quản trị và xử lý các chức năng như tìm kiếm, bình luận, upload hình ảnh lễ hội. Tuy nhiên, với sự hướng dẫn tận tâm và các góp ý của thầy, tôi đã từng bước hoàn thiện hệ thống."},
+  {"index":20,"text":"Môn học giúp tôi nâng cao kỹ năng lập trình C#, ASP.NET MVC 5, Entity Framework 6, Razor View, Bootstrap 5 và các kỹ thuật bảo mật web cơ bản. Đây là nền tảng quan trọng để tôi tiếp tục phát triển các dự án web thực tế trong tương lai."},
+  {"index":110,"text":"Đồ án xây dựng website giới thiệu lễ hội truyền thống của người Khmer tại Việt Nam. Hệ thống phục vụ khách truy cập, thành viên và quản trị viên; hỗ trợ xem lễ hội, đọc bài viết, tìm kiếm, bình luận và quản lý nội dung."},
+  {"index":111,"text":"Hệ thống được phát triển bằng ASP.NET MVC 5 trên .NET Framework, sử dụng Razor View, Bootstrap 5, jQuery và TinyMCE. Dữ liệu được lưu trữ trên Microsoft SQL Server và truy cập thông qua Entity Framework 6."},
+  {"index":112,"text":"Cơ chế xác thực dùng FormsAuthentication; mật khẩu được băm bằng SHA256 kết hợp Salt. Các thao tác POST áp dụng Anti-Forgery Token, phân quyền khu vực Admin bằng Authorize(Roles = Admin), đồng thời upload ảnh kiểm tra định dạng và dung lượng."},
+  {"index":113,"text":"Kết quả của đồ án là một website có đầy đủ chức năng cốt lõi: trang chủ giới thiệu lễ hội, danh sách và chi tiết lễ hội, blog bài viết, tìm kiếm, bình luận chờ duyệt, đăng ký đăng nhập, hồ sơ cá nhân và khu vực quản trị nội dung."},
+  {"index":116,"text":"Văn hóa Khmer Nam Bộ có nhiều lễ hội đặc sắc như Chol Chnam Thmay, Ok Om Bok, lễ Dâng y Kathina, lễ hội đua ghe Ngo và lễ Đom Lơng Néak Tà. Tuy nhiên, thông tin về các lễ hội thường phân tán ở nhiều nguồn, khó tra cứu tập trung theo tên, thời gian, địa điểm hoặc danh mục."},
+  {"index":117,"text":"Một website giới thiệu lễ hội Khmer giúp hệ thống hóa thông tin văn hóa, hình ảnh, bài viết liên quan và tạo kênh tham khảo thuận tiện cho người học, khách du lịch và cộng đồng quan tâm. Đây cũng là bài toán phù hợp để vận dụng kiến thức ASP.NET MVC, Entity Framework, SQL Server, xác thực người dùng, upload hình ảnh và thiết kế giao diện responsive."},
+  {"index":119,"text":"• Xây dựng website cho phép khách truy cập xem danh sách, chi tiết lễ hội và bài viết liên quan."},
+  {"index":120,"text":"• Hỗ trợ tìm kiếm lễ hội theo tên, lọc theo danh mục, tỉnh/thành và năm tổ chức."},
+  {"index":121,"text":"• Cung cấp chức năng đăng ký, đăng nhập, đổi mật khẩu và đặt lại mật khẩu đơn giản."},
+  {"index":122,"text":"• Cho phép thành viên gửi bình luận cho lễ hội hoặc bài viết; bình luận được quản trị viên duyệt trước khi hiển thị."},
+  {"index":123,"text":"• Xây dựng khu vực Admin để quản lý danh mục, lễ hội, bài viết, hình ảnh, bình luận và tài khoản."},
+  {"index":124,"text":"• Bảo vệ dữ liệu bằng phân quyền, Anti-Forgery Token, Entity Framework và kiểm tra upload ảnh."},
+  {"index":126,"text":"Đối tượng sử dụng gồm khách truy cập, thành viên và quản trị viên. Phạm vi đồ án tập trung vào website tiếng Việt giới thiệu lễ hội Khmer tại Việt Nam; không triển khai thanh toán, đặt vé sự kiện, ứng dụng mobile native hoặc đa ngôn ngữ."},
+  {"index":128,"text":"Đề tài được thực hiện theo các bước: đọc và phân tích PRD; thiết kế mô hình dữ liệu; xây dựng dự án ASP.NET MVC 5; hiện thực các module public, tài khoản và admin; tạo dữ liệu mẫu lễ hội Khmer; kiểm thử các luồng đăng nhập, quản trị, tìm kiếm, bình luận và hiển thị hình ảnh."}
+]

@@ -1,0 +1,56 @@
+﻿@model KhmerFestival.Models.Entities.BaiViet
+@{
+    ViewBag.Title = "Chi tiết bài viết";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <div>
+        <h1 class="h3 mb-1">@Model.TieuDe</h1>
+        <div class="text-muted">Chi tiết quản trị bài viết</div>
+    </div>
+    <div class="d-flex gap-2">
+        @Html.ActionLink("Sửa", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary" })
+        @Html.ActionLink("Quay lại", "Index", null, new { @class = "btn btn-link" })
+    </div>
+</div>
+
+<div class="row g-4">
+    <div class="col-lg-8">
+        <div class="admin-card">
+            @if (!string.IsNullOrWhiteSpace(Model.AnhDaiDien))
+            {
+                <img src="@Url.Content(Model.AnhDaiDien)" class="detail-img mb-3" alt="@Model.TieuDe" />
+            }
+            <h2 class="h5">Tóm tắt</h2>
+            <p>@System.Net.WebUtility.HtmlDecode(Model.TomTat)</p>
+            <h2 class="h5 mt-4">Nội dung</h2>
+            <div>@Html.Raw(Model.NoiDung)</div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="admin-card mb-3">
+            <h2 class="h5">Thông tin</h2>
+            <dl class="row mb-0">
+                <dt class="col-5">Tác giả</dt><dd class="col-7">@(Model.NguoiTao == null ? "" : Model.NguoiTao.HoTen)</dd>
+                <dt class="col-5">Ngày tạo</dt><dd class="col-7">@Model.NgayTao.ToString("dd/MM/yyyy HH:mm")</dd>
+                <dt class="col-5">Trạng thái</dt><dd class="col-7">@(Model.IsDeleted ? "Đã xóa" : "Hiển thị")</dd>
+            </dl>
+        </div>
+        <div class="admin-card">
+            <h2 class="h5">Lễ hội liên quan</h2>
+            @if (Model.LehHoiBaiViets.Any())
+            {
+                <div class="list-group list-group-flush">
+                    @foreach (var item in Model.LehHoiBaiViets.Select(x => x.LehHoi).Where(x => x != null && !x.IsDeleted))
+                    {
+                        @Html.ActionLink(item.TenLehHoi, "Details", "LehHoi", new { area = "Admin", id = item.Id }, new { @class = "list-group-item list-group-item-action px-0" })
+                    }
+                </div>
+            }
+            else
+            {
+                <p class="text-muted mb-0">Chưa gắn lễ hội liên quan.</p>
+            }
+        </div>
+    </div>
+</div>

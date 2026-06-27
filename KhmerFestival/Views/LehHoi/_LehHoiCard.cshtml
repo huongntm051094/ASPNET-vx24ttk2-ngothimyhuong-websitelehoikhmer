@@ -1,0 +1,9 @@
+﻿@model KhmerFestival.Models.Entities.LehHoi
+<article class="card h-100 festival-card">
+    @if (!string.IsNullOrWhiteSpace(Model.AnhDaiDien)) { <img src="@Url.Content(Model.AnhDaiDien)" class="card-img-top" alt="@Model.TenLehHoi" /> }
+    <div class="card-body">
+        <h3 class="h5">@Html.ActionLink(Model.TenLehHoi, "Details", "LehHoi", new { id = Model.Id }, null)</h3>
+        <div class="text-muted small">@Model.DiaDiem - @Model.NgayBatDau.GetValueOrDefault().ToString("dd/MM/yyyy")</div>
+        <p>@System.Net.WebUtility.HtmlDecode(Model.TomTat)</p>
+    </div>
+</article>

@@ -1,0 +1,188 @@
+﻿:root {
+  --khmer-red: #C0392B;
+  --khmer-gold: #F39C12;
+  --ink: #1f2937;
+  --surface: #ffffff;
+  --surface-alt: #f3f4f6;
+}
+
+body {
+  font-family: "DM Sans", Arial, sans-serif;
+  color: var(--ink);
+  background: #fafafa;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6, .navbar-brand {
+  font-family: "Bricolage Grotesque", sans-serif;
+}
+
+.bg-khmer { background: var(--khmer-red); }
+
+.hero-slide {
+  min-height: 400px;
+  background: linear-gradient(135deg, rgba(192,57,43,0.92), rgba(243,156,18,0.8)), url("/Content/Uploads/Seed/chol-chnam-thmay.jpg") center/cover;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(192,57,43,0.15);
+  margin-top: 16px;
+  margin-bottom: 32px;
+}
+
+.hero-copy {
+  color: #fff;
+  max-width: 720px;
+  padding: 80px 56px;
+}
+
+.hero-copy h1 {
+  font-size: 56px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  margin-bottom: 16px;
+}
+
+.hero-copy p {
+  font-size: 20px;
+  opacity: 0.95;
+  font-weight: 400;
+}
+
+.card {
+  border: none;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+  background: #fff;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+}
+
+.festival-card .card-img-top, .card-img-top {
+  height: 220px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.card:hover .card-img-top {
+  transform: scale(1.05);
+}
+
+.card-body {
+  padding: 24px;
+}
+
+.card-title, .h5 {
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.card-title a {
+  color: var(--ink);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.card-title a:hover {
+  color: var(--khmer-red);
+}
+
+.btn {
+  border-radius: 50px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  padding: 8px 24px;
+}
+
+.btn:active {
+  transform: scale(0.96);
+}
+
+.btn-warning {
+  background-color: var(--khmer-gold);
+  border-color: var(--khmer-gold);
+  color: #fff;
+}
+
+.btn-warning:hover {
+  background-color: #d68910;
+  border-color: #d68910;
+  color: #fff;
+}
+
+.form-control {
+  border-radius: 50px;
+  border: 1px solid #e5e7eb;
+  padding: 8px 20px;
+  transition: all 0.2s ease;
+  box-shadow: none;
+}
+
+.form-control:focus {
+  border-color: var(--khmer-gold);
+  box-shadow: 0 0 0 4px rgba(243, 156, 18, 0.15);
+}
+
+.navbar {
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  padding: 12px 0;
+}
+
+.navbar-brand {
+  font-size: 24px;
+  letter-spacing: -0.01em;
+}
+
+.detail-img { width: 100%; max-height: 480px; object-fit: cover; border-radius: 16px; box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+.gallery-img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 12px; transition: all 0.3s ease; }
+.gallery-img:hover { transform: scale(1.03); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+
+.admin-shell { display: grid; grid-template-columns: 260px 1fr; min-height: 100vh; }
+.admin-sidebar { background: #111827; color: #fff; }
+.admin-link { display: block; color: #d1d5db; text-decoration: none; padding: 12px 24px; transition: all 0.2s; font-weight: 500; border-radius: 8px; margin: 4px 12px; }
+.admin-link:hover { background: #1f2937; color: #fff; transform: translateX(4px); }
+.admin-main { background: #f3f4f6; }
+.admin-topbar { height: 64px; background: #fff; border-bottom: 1px solid #e5e7eb; display: flex; align-items: center; justify-content: flex-end; gap: 16px; padding: 0 32px; box-shadow: 0 1px 3px rgba(0,0,0,0.03); }
+.stat { background: #fff; border: 1px solid #e5e7eb; border-radius: 16px; padding: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1); }
+.stat:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.06); }
+.stat span { display: block; font-size: 40px; font-weight: 800; color: var(--khmer-red); font-family: "Bricolage Grotesque", sans-serif; line-height: 1.1; }
+.stat small { color: #6b7280; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; font-size: 13px; margin-top: 4px; display: block; }
+.admin-card { background: #fff; border: 1px solid #e8edf4; border-radius: 16px; padding: 24px; box-shadow: 0 12px 30px rgba(0, 13, 68, .06); }
+.admin-card h2 { color: #000d44; font-weight: 800; }
+.admin-card dt { color: #64748b; font-weight: 700; }
+.admin-card dd { color: #111827; }
+
+.list-group-item {
+  border: none;
+  border-bottom: 1px solid #f3f4f6;
+  padding: 12px 20px;
+  transition: all 0.2s;
+  color: #4b5563;
+  font-weight: 500;
+}
+.list-group-item:last-child {
+  border-bottom: none;
+}
+.list-group-item:hover {
+  background-color: #f9fafb;
+  color: var(--khmer-red);
+  padding-left: 24px;
+}
+.list-group {
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .hero-slide { margin-top: 0; border-radius: 0; }
+  .hero-copy { padding: 48px 24px; }
+  .hero-copy h1 { font-size: 40px; }
+  .admin-shell { grid-template-columns: 1fr; }
+  .admin-sidebar { position: static; }
+}

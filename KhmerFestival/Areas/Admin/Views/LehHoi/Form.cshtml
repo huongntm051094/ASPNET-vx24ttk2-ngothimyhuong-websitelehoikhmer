@@ -1,0 +1,25 @@
+﻿@model KhmerFestival.Models.Entities.LehHoi
+@{ ViewBag.Title = Model.Id == 0 ? "Thêm lễ hội" : "Sửa lễ hội"; }
+<h1 class="h3">@ViewBag.Title</h1>
+@using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(x => x.Id)
+    @Html.HiddenFor(x => x.AnhDaiDien)
+    @Html.HiddenFor(x => x.IsDeleted)
+    @Html.HiddenFor(x => x.NgayTao)
+    @Html.HiddenFor(x => x.NguoiTaoId)
+    <div class="row g-3">
+        <div class="col-md-8">@Html.LabelFor(x => x.TenLehHoi, new { @class = "form-label" })@Html.TextBoxFor(x => x.TenLehHoi, new { @class = "form-control" })</div>
+        <div class="col-md-4">@Html.LabelFor(x => x.DanhMucId, new { @class = "form-label" })@Html.DropDownList("DanhMucId", null, new { @class = "form-select" })</div>
+        <div class="col-12">@Html.LabelFor(x => x.TomTat, new { @class = "form-label" })@Html.TextAreaFor(x => x.TomTat, new { @class = "form-control", rows = 2 })</div>
+        <div class="col-md-6">@Html.LabelFor(x => x.NgayBatDau, new { @class = "form-label" })@Html.TextBoxFor(x => x.NgayBatDau, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })</div>
+        <div class="col-md-6">@Html.LabelFor(x => x.NgayKetThuc, new { @class = "form-label" })@Html.TextBoxFor(x => x.NgayKetThuc, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })</div>
+        <div class="col-md-6">@Html.LabelFor(x => x.DiaDiem, new { @class = "form-label" })@Html.TextBoxFor(x => x.DiaDiem, new { @class = "form-control" })</div>
+        <div class="col-md-6">@Html.LabelFor(x => x.TinhThanh, new { @class = "form-label" })@Html.TextBoxFor(x => x.TinhThanh, new { @class = "form-control" })</div>
+        <div class="col-12"><label class="form-label">Ảnh đại diện</label><input class="form-control" type="file" name="anhDaiDien" accept=".jpg,.jpeg,.png" /></div>
+        <div class="col-12">@Html.LabelFor(x => x.MoTa, new { @class = "form-label" })@Html.TextAreaFor(x => x.MoTa, new { @class = "form-control richtext" })</div>
+        <div class="col-12">@Html.LabelFor(x => x.YNghiaVanHoa, new { @class = "form-label" })@Html.TextAreaFor(x => x.YNghiaVanHoa, new { @class = "form-control richtext" })</div>
+    </div>
+    <div class="mt-3"><button class="btn btn-primary">Lưu</button>@Html.ActionLink("Hủy", "Index", null, new { @class = "btn btn-link" })</div>
+}

@@ -1,0 +1,52 @@
+﻿@model KhmerFestival.Models.ViewModels.HomeViewModel
+@{ ViewBag.Title = "Trang chủ"; }
+<div id="hero" class="carousel slide mb-4" data-bs-ride="carousel">
+    <div class="carousel-inner rounded">
+        <div class="carousel-item active hero-slide">
+            <div class="hero-copy">
+                <h1>Lễ hội Khmer</h1>
+                <p>Khám phá những giá trị văn hóa, tín ngưỡng và đời sống cộng đồng Khmer Nam Bộ.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row g-4 mt-2">
+    <section class="col-lg-9">
+        <div class="d-flex justify-content-between align-items-end mb-3">
+            <h2 class="h3 fw-bold text-uppercase mb-0" style="color: var(--khmer-red);">Lễ hội sắp diễn ra</h2>
+        </div>
+        <div class="row g-3">
+            @foreach (var item in Model.SapDienRa)
+            {
+                <div class="col-md-6 col-xl-4">@Html.Partial("~/Views/LehHoi/_LehHoiCard.cshtml", item)</div>
+            }
+        </div>
+        
+        <div class="d-flex justify-content-between align-items-end mt-5 mb-3">
+            <h2 class="h3 fw-bold text-uppercase mb-0" style="color: var(--khmer-red);">Bài viết mới nhất</h2>
+        </div>
+        <div class="row g-3">
+            @foreach (var item in Model.BaiVietMoi)
+            {
+                <div class="col-md-6">
+                    <article class="card h-100 festival-card border-0 shadow-sm">
+                        @if (!string.IsNullOrWhiteSpace(item.AnhDaiDien)) { <img src="@Url.Content(item.AnhDaiDien)" class="card-img-top" style="height:200px; object-fit:cover;" alt="@item.TieuDe" /> }
+                        <div class="card-body">
+                            <h3 class="h5 fw-bold mb-2">@Html.ActionLink(item.TieuDe, "Details", "BaiViet", new { id = item.Id }, new { @class = "text-decoration-none text-dark" })</h3>
+                            <p class="text-muted small mb-0">@System.Net.WebUtility.HtmlDecode(item.TomTat)</p>
+                        </div>
+                    </article>
+                </div>
+            }
+        </div>
+    </section>
+    <aside class="col-lg-3">
+        <h2 class="h5 fw-bold mb-3 text-uppercase" style="color: var(--khmer-red);">Danh mục lễ hội</h2>
+        <div class="list-group shadow-sm border-0 rounded-4">
+            @foreach (var dm in Model.DanhMucs)
+            {
+                @Html.ActionLink(dm.TenDanhMuc, "Index", "LehHoi", new { danhMucId = dm.Id }, new { @class = "list-group-item list-group-item-action py-3 border-light fw-semibold" })
+            }
+        </div>
+    </aside>
+</div>

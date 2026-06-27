@@ -1,0 +1,71 @@
+﻿@model KhmerFestival.Models.Entities.LehHoi
+@{
+    ViewBag.Title = "Chi tiết lễ hội";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <div>
+        <h1 class="h3 mb-1">@Model.TenLehHoi</h1>
+        <div class="text-muted">Chi tiết quản trị lễ hội</div>
+    </div>
+    <div class="d-flex gap-2">
+        @Html.ActionLink("Sửa", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary" })
+        @Html.ActionLink("Quản lý ảnh", "Images", new { id = Model.Id }, new { @class = "btn btn-outline-secondary" })
+        @Html.ActionLink("Quay lại", "Index", null, new { @class = "btn btn-link" })
+    </div>
+</div>
+
+<div class="row g-4">
+    <div class="col-lg-8">
+        <div class="admin-card">
+            @if (!string.IsNullOrWhiteSpace(Model.AnhDaiDien))
+            {
+                <img src="@Url.Content(Model.AnhDaiDien)" class="detail-img mb-3" alt="@Model.TenLehHoi" />
+            }
+            <h2 class="h5">Tóm tắt</h2>
+            <p>@System.Net.WebUtility.HtmlDecode(Model.TomTat)</p>
+            <h2 class="h5 mt-4">Mô tả</h2>
+            <div>@Html.Raw(Model.MoTa)</div>
+            <h2 class="h5 mt-4">Ý nghĩa văn hóa</h2>
+            <div>@Html.Raw(Model.YNghiaVanHoa)</div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="admin-card mb-3">
+            <h2 class="h5">Thông tin</h2>
+            <dl class="row mb-0">
+                <dt class="col-5">Danh mục</dt><dd class="col-7">@(Model.DanhMuc == null ? "" : Model.DanhMuc.TenDanhMuc)</dd>
+                <dt class="col-5">Thời gian</dt><dd class="col-7">@Model.NgayBatDau.GetValueOrDefault().ToString("dd/MM/yyyy") - @Model.NgayKetThuc.GetValueOrDefault().ToString("dd/MM/yyyy")</dd>
+                <dt class="col-5">Địa điểm</dt><dd class="col-7">@Model.DiaDiem</dd>
+                <dt class="col-5">Tỉnh/thành</dt><dd class="col-7">@Model.TinhThanh</dd>
+                <dt class="col-5">Người tạo</dt><dd class="col-7">@(Model.NguoiTao == null ? "" : Model.NguoiTao.HoTen)</dd>
+                <dt class="col-5">Ngày tạo</dt><dd class="col-7">@Model.NgayTao.ToString("dd/MM/yyyy HH:mm")</dd>
+            </dl>
+        </div>
+        <div class="admin-card mb-3">
+            <h2 class="h5">Bài viết liên quan</h2>
+            @if (Model.LehHoiBaiViets.Any())
+            {
+                <div class="list-group list-group-flush">
+                    @foreach (var item in Model.LehHoiBaiViets.Select(x => x.BaiViet).Where(x => x != null && !x.IsDeleted))
+                    {
+                        @Html.ActionLink(item.TieuDe, "Details", "BaiViet", new { area = "Admin", id = item.Id }, new { @class = "list-group-item list-group-item-action px-0" })
+                    }
+                </div>
+            }
+            else
+            {
+                <p class="text-muted mb-0">Chưa có bài viết liên quan.</p>
+            }
+        </div>
+        <div class="admin-card">
+            <h2 class="h5">Ảnh thư viện</h2>
+            <div class="row g-2">
+                @foreach (var image in Model.HinhAnhs.Take(6))
+                {
+                    <div class="col-6"><img src="@Url.Content(image.DuongDan)" class="gallery-img" alt="@image.MoTa" /></div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

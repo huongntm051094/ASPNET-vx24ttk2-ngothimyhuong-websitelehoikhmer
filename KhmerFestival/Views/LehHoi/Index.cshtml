@@ -1,0 +1,23 @@
+﻿@model KhmerFestival.Models.ViewModels.LehHoiListViewModel
+@{ ViewBag.Title = "Lễ hội"; }
+<h1 class="h3 mb-3">Danh sách lễ hội</h1>
+@using (Html.BeginForm("Index", "LehHoi", FormMethod.Get, new { @class = "row g-2 align-items-end mb-4" }))
+{
+    <div class="col-md-3"><label class="form-label">Từ khóa</label><input class="form-control" name="q" value="@Model.TuKhoa" /></div>
+    <div class="col-md-3"><label class="form-label">Danh mục</label>@Html.DropDownList("danhMucId", new SelectList(Model.DanhMucs, "Id", "TenDanhMuc", Model.DanhMucId), "Tất cả", new { @class = "form-select" })</div>
+    <div class="col-md-2"><label class="form-label">Tỉnh/thành</label><input class="form-control" name="tinhThanh" value="@Model.TinhThanh" /></div>
+    <div class="col-md-2"><label class="form-label">Năm</label><input class="form-control" type="number" name="nam" value="@Model.Nam" /></div>
+    <div class="col-md-2"><button class="btn btn-primary w-100">Lọc</button></div>
+}
+<div class="row g-3">
+    @foreach (var item in Model.Items)
+    {
+        <div class="col-md-6 col-xl-4">@Html.Partial("_LehHoiCard", item)</div>
+    }
+</div>
+<nav class="mt-4">
+    @for (var i = 1; i <= Model.TotalPages; i++)
+    {
+        @Html.ActionLink(i.ToString(), "Index", new { page = i, q = Model.TuKhoa, danhMucId = Model.DanhMucId, tinhThanh = Model.TinhThanh, nam = Model.Nam }, new { @class = "btn btn-sm " + (i == Model.Page ? "btn-primary" : "btn-outline-primary") })
+    }
+</nav>

@@ -1,0 +1,7 @@
+﻿@model KhmerFestival.Models.ViewModels.SearchViewModel
+@{ ViewBag.Title = "Tìm kiếm"; }
+<h1 class="h3">Kết quả tìm kiếm: @Model.TuKhoa</h1>
+<h2 class="h5 mt-4">Lễ hội tìm được</h2>
+<div class="row g-3">@foreach (var item in Model.LehHois) { <div class="col-md-4">@Html.Partial("~/Views/LehHoi/_LehHoiCard.cshtml", item)</div> }</div>
+<h2 class="h5 mt-4">Bài viết tìm được</h2>
+<div class="list-group">@foreach (var item in Model.BaiViets) { @Html.ActionLink(item.TieuDe, "Details", "BaiViet", new { id = item.Id }, new { @class = "list-group-item list-group-item-action" }) }</div>

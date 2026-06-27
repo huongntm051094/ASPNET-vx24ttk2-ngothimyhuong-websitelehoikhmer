@@ -1,0 +1,33 @@
+﻿@model IEnumerable<KhmerFestival.Models.Entities.BinhLuan>
+@{ ViewBag.Title = "Bình luận"; }
+<h1 class="h3">Quản lý bình luận</h1>
+<div class="mb-3">
+    @Html.ActionLink("Chờ duyệt", "Index", new { trangThai = "ChoDuyet" }, new { @class = "btn btn-sm btn-outline-primary" })
+    @Html.ActionLink("Đã duyệt", "Index", new { trangThai = "DaDuyet" }, new { @class = "btn btn-sm btn-outline-primary" })
+    @Html.ActionLink("Bị ẩn", "Index", new { trangThai = "BiAn" }, new { @class = "btn btn-sm btn-outline-primary" })
+</div>
+<table class="table table-striped table-sm align-middle">
+    <thead><tr><th>Người dùng</th><th>Nội dung</th><th>Đối tượng</th><th>Ngày tạo</th><th></th></tr></thead>
+    <tbody>
+    @if (!Model.Any())
+    {
+        <tr><td colspan="5" class="text-center text-muted py-3">Không có dữ liệu</td></tr>
+    }
+    else
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.NguoiDung.HoTen</td>
+                <td>@item.NoiDung</td>
+                <td>@(item.LehHoi != null ? item.LehHoi.TenLehHoi : item.BaiViet.TieuDe)</td>
+                <td>@item.NgayTao.ToString("dd/MM/yyyy HH:mm")</td>
+                <td class="text-end">
+                    @using (Html.BeginForm("UpdateStatus", "BinhLuan", new { id = item.Id, trangThai = "DaDuyet" }, FormMethod.Post, new { @class = "d-inline" })) { @Html.AntiForgeryToken()<button class="btn btn-sm btn-success">Duyệt</button> }
+                    @using (Html.BeginForm("UpdateStatus", "BinhLuan", new { id = item.Id, trangThai = "BiAn" }, FormMethod.Post, new { @class = "d-inline" })) { @Html.AntiForgeryToken()<button class="btn btn-sm btn-warning">Ẩn</button> }
+                </td>
+            </tr>
+        }
+    }
+    </tbody>
+</table>

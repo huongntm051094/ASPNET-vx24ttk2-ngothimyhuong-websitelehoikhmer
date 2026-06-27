@@ -1,0 +1,10 @@
+﻿@model KhmerFestival.Models.ViewModels.DashboardViewModel
+@{ ViewBag.Title = "Dashboard"; }
+<h1 class="h3 mb-3">Dashboard</h1>
+<div class="row g-3 mb-4">
+    <div class="col-md-3"><div class="stat"><span>@Model.TongLehHoi</span><small>Lễ hội</small></div></div>
+    <div class="col-md-3"><div class="stat"><span>@Model.TongBaiViet</span><small>Bài viết</small></div></div>
+    <div class="col-md-3"><div class="stat"><span>@Model.TongBinhLuanChoDuyet</span><small>Chờ duyệt</small></div></div>
+    <div class="col-md-3"><div class="stat"><span>@Model.TongTaiKhoan</span><small>Tài khoản</small></div></div>
+</div>
+<p>Quản trị nội dung website giới thiệu lễ hội Khmer.</p>
